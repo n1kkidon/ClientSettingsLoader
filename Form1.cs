@@ -1,4 +1,6 @@
 using ChallengesAreEvil;
+using ClientSettingsLoader.StaticData;
+
 namespace ClientSettingsLoader
 {
     public partial class Form1 : Form
@@ -13,6 +15,7 @@ namespace ClientSettingsLoader
             label3.ForeColor = Color.Gray;
             FileGeneralData = "";
             FileInputData = "";
+            comboBox1.Enabled = false;
 
         }
         private string FileInputData { get; set; }
@@ -44,7 +47,9 @@ namespace ClientSettingsLoader
             if (!CheckIfConnected())
                 return;
             await ExecutePatchFromImported("/lol-game-settings/v1/input-settings/", FileInputData);
-            await ExecutePatchFromImported("/lol-game-settings/v1/game-settings/", FileGeneralData);          
+            await ExecutePatchFromImported("/lol-game-settings/v1/game-settings/", FileGeneralData);
+            if(skinList!=null)
+                await ExecutePost("/lol-summoner/v1/current-summoner/summoner-profile", $"{{\"key\": \"backgroundSkinId\", \"value\": {skinList[comboBox1.SelectedIndex].Id}}}");
         }
 
         private async Task<bool> ExecutePatchFromImported(string endpoint, string data)
@@ -136,6 +141,45 @@ namespace ClientSettingsLoader
                 return;
             await ExecutePost("/lol-challenges/v1/update-player-preferences/", "{ \"challengeIds\": [] }");
 
+        }
+
+        public List<SkinStatic> skinList;
+        private void GetSkins_Click(object sender, EventArgs e)
+        {
+            var values = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < values.Length; i++)
+                values[i] = values[i][0].ToString().ToUpper() + values[i][1..];
+            var name = values.JoinColletion("");
+            try
+            {
+                var endpoint = new StaticChampionEndpoint();
+                var skindata = endpoint.GetByKeyAsync(name).Result;
+                skinList = skindata.Skins;
+                
+
+                label1.Text = "Champion found!";
+                label1.ForeColor = Color.Green;
+                label1.Visible = true;
+                ExpireLabel();
+
+                comboBox1.Items.Clear();
+                comboBox1.Items.AddRange(skinList.ToArray());
+                comboBox1.SelectedIndex = 0;
+                comboBox1.Enabled = true;
+                Run_Btn.Enabled = true;
+            }
+            catch(Exception ex)
+            {
+                Run_Btn.Enabled = false;
+                label1.Text = "Champion not found!";
+                label1.ForeColor = Color.Red;
+                label1.Visible = true;
+                ExpireLabel();
+
+                comboBox1.Enabled = false;
+                var str = ex.Message;
+                var str2 = ex.StackTrace;
+            }
         }
     }
 }

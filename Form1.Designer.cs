@@ -39,6 +39,9 @@
             this.Import_game_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.ResetTokens_Btn = new System.Windows.Forms.Button();
+            this.GetSkins = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -55,7 +58,7 @@
             // Run_Btn
             // 
             this.Run_Btn.BackColor = System.Drawing.Color.White;
-            this.Run_Btn.Location = new System.Drawing.Point(76, 291);
+            this.Run_Btn.Location = new System.Drawing.Point(76, 314);
             this.Run_Btn.Name = "Run_Btn";
             this.Run_Btn.Size = new System.Drawing.Size(209, 31);
             this.Run_Btn.TabIndex = 1;
@@ -130,12 +133,41 @@
             this.ResetTokens_Btn.UseVisualStyleBackColor = false;
             this.ResetTokens_Btn.Click += new System.EventHandler(this.ResetTokens_Btn_Click);
             // 
+            // GetSkins
+            // 
+            this.GetSkins.Location = new System.Drawing.Point(191, 242);
+            this.GetSkins.Name = "GetSkins";
+            this.GetSkins.Size = new System.Drawing.Size(75, 23);
+            this.GetSkins.TabIndex = 8;
+            this.GetSkins.Text = "Load Skins";
+            this.GetSkins.UseVisualStyleBackColor = true;
+            this.GetSkins.Click += new System.EventHandler(this.GetSkins_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(89, 241);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Champion Name";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 9;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(89, 270);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(177, 23);
+            this.comboBox1.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(366, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.GetSkins);
             this.Controls.Add(this.ResetTokens_Btn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Import_game_btn);
@@ -165,5 +197,8 @@
         private Button Import_game_btn;
         private Label label3;
         private Button ResetTokens_Btn;
+        private Button GetSkins;
+        private TextBox textBox1;
+        private ComboBox comboBox1;
     }
 }
