@@ -47,7 +47,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(76, 97);
+            this.button1.Location = new System.Drawing.Point(77, 74);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 47);
             this.button1.TabIndex = 0;
@@ -58,7 +58,7 @@
             // Run_Btn
             // 
             this.Run_Btn.BackColor = System.Drawing.Color.White;
-            this.Run_Btn.Location = new System.Drawing.Point(76, 314);
+            this.Run_Btn.Location = new System.Drawing.Point(77, 291);
             this.Run_Btn.Name = "Run_Btn";
             this.Run_Btn.Size = new System.Drawing.Size(209, 31);
             this.Run_Btn.TabIndex = 1;
@@ -83,7 +83,7 @@
             // Export_file_btn
             // 
             this.Export_file_btn.BackColor = System.Drawing.Color.White;
-            this.Export_file_btn.Location = new System.Drawing.Point(190, 97);
+            this.Export_file_btn.Location = new System.Drawing.Point(191, 74);
             this.Export_file_btn.Name = "Export_file_btn";
             this.Export_file_btn.Size = new System.Drawing.Size(95, 47);
             this.Export_file_btn.TabIndex = 3;
@@ -95,7 +95,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(76, 147);
+            this.label2.Location = new System.Drawing.Point(77, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 15);
             this.label2.TabIndex = 4;
@@ -104,7 +104,7 @@
             // Import_game_btn
             // 
             this.Import_game_btn.BackColor = System.Drawing.Color.White;
-            this.Import_game_btn.Location = new System.Drawing.Point(76, 165);
+            this.Import_game_btn.Location = new System.Drawing.Point(77, 142);
             this.Import_game_btn.Name = "Import_game_btn";
             this.Import_game_btn.Size = new System.Drawing.Size(95, 47);
             this.Import_game_btn.TabIndex = 5;
@@ -115,7 +115,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 215);
+            this.label3.Location = new System.Drawing.Point(77, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 6;
@@ -125,7 +125,7 @@
             // 
             this.ResetTokens_Btn.BackColor = System.Drawing.Color.White;
             this.ResetTokens_Btn.ForeColor = System.Drawing.Color.Black;
-            this.ResetTokens_Btn.Location = new System.Drawing.Point(190, 165);
+            this.ResetTokens_Btn.Location = new System.Drawing.Point(191, 142);
             this.ResetTokens_Btn.Name = "ResetTokens_Btn";
             this.ResetTokens_Btn.Size = new System.Drawing.Size(95, 47);
             this.ResetTokens_Btn.TabIndex = 7;
@@ -135,28 +135,29 @@
             // 
             // GetSkins
             // 
-            this.GetSkins.Location = new System.Drawing.Point(191, 242);
+            this.GetSkins.BackColor = System.Drawing.Color.White;
+            this.GetSkins.Location = new System.Drawing.Point(211, 218);
             this.GetSkins.Name = "GetSkins";
             this.GetSkins.Size = new System.Drawing.Size(75, 23);
             this.GetSkins.TabIndex = 8;
             this.GetSkins.Text = "Load Skins";
-            this.GetSkins.UseVisualStyleBackColor = true;
+            this.GetSkins.UseVisualStyleBackColor = false;
             this.GetSkins.Click += new System.EventHandler(this.GetSkins_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(89, 241);
+            this.textBox1.Location = new System.Drawing.Point(77, 218);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Champion Name";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.Size = new System.Drawing.Size(128, 23);
             this.textBox1.TabIndex = 9;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(89, 270);
+            this.comboBox1.Location = new System.Drawing.Point(77, 247);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(177, 23);
+            this.comboBox1.Size = new System.Drawing.Size(209, 23);
             this.comboBox1.TabIndex = 10;
             // 
             // Form1
