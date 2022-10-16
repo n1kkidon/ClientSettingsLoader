@@ -42,6 +42,8 @@
             this.GetSkins = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.setStatusMsg = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -154,18 +156,42 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(77, 247);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(209, 23);
             this.comboBox1.TabIndex = 10;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(316, 74);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Status message";
+            this.textBox2.Size = new System.Drawing.Size(175, 196);
+            this.textBox2.TabIndex = 11;
+            // 
+            // setStatusMsg
+            // 
+            this.setStatusMsg.BackColor = System.Drawing.Color.White;
+            this.setStatusMsg.ForeColor = System.Drawing.Color.Black;
+            this.setStatusMsg.Location = new System.Drawing.Point(316, 291);
+            this.setStatusMsg.Name = "setStatusMsg";
+            this.setStatusMsg.Size = new System.Drawing.Size(175, 31);
+            this.setStatusMsg.TabIndex = 12;
+            this.setStatusMsg.Text = "Set status message";
+            this.setStatusMsg.UseVisualStyleBackColor = false;
+            this.setStatusMsg.Click += new System.EventHandler(this.setStatusMsg_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.ClientSize = new System.Drawing.Size(366, 450);
+            this.ClientSize = new System.Drawing.Size(586, 450);
+            this.Controls.Add(this.setStatusMsg);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.GetSkins);
@@ -201,5 +227,7 @@
         private Button GetSkins;
         private TextBox textBox1;
         private ComboBox comboBox1;
+        private TextBox textBox2;
+        private Button setStatusMsg;
     }
 }

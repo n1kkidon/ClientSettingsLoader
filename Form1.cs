@@ -18,8 +18,8 @@ namespace ClientSettingsLoader
             comboBox1.Enabled = false;
 
         }
-        private string FileInputData { get; set; }
-        private string FileGeneralData { get; set; }
+        private string? FileInputData { get; set; }
+        private string? FileGeneralData { get; set; }
         private LeagueConnection Lc { get; set; }
         private void ExpireLabel()
         {
@@ -46,13 +46,21 @@ namespace ClientSettingsLoader
         {
             if (!CheckIfConnected())
                 return;
-            await ExecutePatchFromImported("/lol-game-settings/v1/input-settings/", FileInputData);
+            await ExecutePatchFromImported("/lol-game-settings/v1/input-settings/", FileInputData);          
             await ExecutePatchFromImported("/lol-game-settings/v1/game-settings/", FileGeneralData);
-            if(skinList!=null)
+            FileGeneralData = null;
+            label3.Text = "No File";
+            label3.ForeColor = Color.Gray;
+            FileInputData = null;
+            label2.Text = "No File";
+            label2.ForeColor = Color.Gray;
+
+
+            if (skinList!=null)
                 await ExecutePost("/lol-summoner/v1/current-summoner/summoner-profile", $"{{\"key\": \"backgroundSkinId\", \"value\": {skinList[comboBox1.SelectedIndex].Id}}}");
         }
 
-        private async Task<bool> ExecutePatchFromImported(string endpoint, string data)
+        private async Task<bool> ExecutePatchFromImported(string endpoint, string? data)
         {
             if (data != null)
             {
@@ -78,6 +86,21 @@ namespace ClientSettingsLoader
         private async Task<bool> ExecutePost(string endpoint, string data)
         {
             var resp = await Lc.Post(endpoint, data);
+            if (resp.IsSuccessStatusCode)
+            {
+                label1.Text = "Success!";
+                label1.ForeColor = Color.Green;
+                label1.Visible = true;
+                ExpireLabel();
+                return true;
+            }
+
+            ExpireLabel();
+            return false;
+        }
+        private async Task<bool> ExecutePut(string endpoint, string data)
+        {
+            var resp = await Lc.Put(endpoint, data);
             if (resp.IsSuccessStatusCode)
             {
                 label1.Text = "Success!";
@@ -146,12 +169,12 @@ namespace ClientSettingsLoader
         public List<SkinStatic> skinList;
         private void GetSkins_Click(object sender, EventArgs e)
         {
-            var values = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < values.Length; i++)
-                values[i] = values[i][0].ToString().ToUpper() + values[i][1..];
-            var name = values.JoinColletion("");
             try
             {
+                var values = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < values.Length; i++)
+                    values[i] = values[i][0].ToString().ToUpper() + values[i][1..];
+                var name = values.JoinColletion("");
                 var endpoint = new StaticChampionEndpoint();
                 var skindata = endpoint.GetByKeyAsync(name).Result;
                 skinList = skindata.Skins;
@@ -180,6 +203,12 @@ namespace ClientSettingsLoader
                 var str = ex.Message;
                 var str2 = ex.StackTrace;
             }
+        }
+
+        private async void setStatusMsg_Click(object sender, EventArgs e)
+        {
+            if(CheckIfConnected())
+                await ExecutePut("/lol-chat/v1/me", $"{{\"statusMessage\": \"{textBox2.Lines.JoinColletion(" ")}\"}}");
         }
     }
 }

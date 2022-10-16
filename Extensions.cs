@@ -16,13 +16,12 @@ namespace ClientSettingsLoader
         /// <returns></returns>
         public static string JoinColletion(this IEnumerable<string> values, string symbol)
         {
+            if (!values.Any())
+                return "";
             string final = String.Empty;
-            for (int i = 0; i < values.Count(); i++)
-            {
-                final += values.ElementAt(i);
-                if (i < values.Count() - 1)
-                    final += symbol;
-            }
+            for (int i = 0; i < values.Count()-1; i++)
+                final += values.ElementAt(i)+symbol;
+            final += values.ElementAt(^1);
             return final;
         }
     }

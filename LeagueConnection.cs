@@ -186,6 +186,13 @@ namespace ChallengesAreEvil
             return await HTTP_CLIENT.PostAsync("https://127.0.0.1:" + processInfo.Item3 + url, new StringContent(body, Encoding.UTF8, "application/json"));
         }
 
+        public async Task<HttpResponseMessage> Put(string url, string body)
+        {
+            if (!connected) throw new InvalidOperationException("Not connected to LCU");
+
+            return await HTTP_CLIENT.PutAsync("https://127.0.0.1:" + processInfo.Item3 + url, new StringContent(body, Encoding.UTF8, "application/json"));
+        }
+
         public async Task<HttpResponseMessage> Patch(string url, string body)
         {
             if (!connected) throw new InvalidOperationException("Not connected to LCU");
