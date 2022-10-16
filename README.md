@@ -1,2 +1,2 @@
 # ClientSettingsLoader
-Compiled version: https://b.catgirlsare.sexy/PX2RNDXdPFwT.exe
+Compiled version: https://b.catgirlsare.sexy/6Bqkg-LowAlG.exe

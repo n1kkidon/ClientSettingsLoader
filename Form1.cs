@@ -1,4 +1,4 @@
-using ChallengesAreEvil;
+﻿using ChallengesAreEvil;
 using ClientSettingsLoader.StaticData;
 
 namespace ClientSettingsLoader
@@ -207,8 +207,9 @@ namespace ClientSettingsLoader
 
         private async void setStatusMsg_Click(object sender, EventArgs e)
         {
-            if(CheckIfConnected())
-                await ExecutePut("/lol-chat/v1/me", $"{{\"statusMessage\": \"{textBox2.Lines.JoinColletion(" ")}\"}}");
+            var customenter = "　　　　　　　　　　　　　 　　　　　　　　　　　　  ";
+            if (CheckIfConnected())
+                await ExecutePut("/lol-chat/v1/me", $"{{\"statusMessage\": \"{textBox2.Lines.JoinColletion(customenter).Replace(" ", " ")}\"}}");
         }
     }
 }
