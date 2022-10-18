@@ -39,11 +39,10 @@
             this.Import_game_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.ResetTokens_Btn = new System.Windows.Forms.Button();
-            this.GetSkins = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.setStatusMsg = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -135,25 +134,6 @@
             this.ResetTokens_Btn.UseVisualStyleBackColor = false;
             this.ResetTokens_Btn.Click += new System.EventHandler(this.ResetTokens_Btn_Click);
             // 
-            // GetSkins
-            // 
-            this.GetSkins.BackColor = System.Drawing.Color.White;
-            this.GetSkins.Location = new System.Drawing.Point(211, 218);
-            this.GetSkins.Name = "GetSkins";
-            this.GetSkins.Size = new System.Drawing.Size(75, 23);
-            this.GetSkins.TabIndex = 8;
-            this.GetSkins.Text = "Load Skins";
-            this.GetSkins.UseVisualStyleBackColor = false;
-            this.GetSkins.Click += new System.EventHandler(this.GetSkins_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(77, 218);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Champion Name";
-            this.textBox1.Size = new System.Drawing.Size(128, 23);
-            this.textBox1.TabIndex = 9;
-            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -184,17 +164,26 @@
             this.setStatusMsg.UseVisualStyleBackColor = false;
             this.setStatusMsg.Click += new System.EventHandler(this.setStatusMsg_Click);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(77, 210);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(209, 23);
+            this.comboBox2.TabIndex = 13;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(586, 450);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.setStatusMsg);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.GetSkins);
             this.Controls.Add(this.ResetTokens_Btn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Import_game_btn);
@@ -224,10 +213,9 @@
         private Button Import_game_btn;
         private Label label3;
         private Button ResetTokens_Btn;
-        private Button GetSkins;
-        private TextBox textBox1;
         private ComboBox comboBox1;
         private TextBox textBox2;
         private Button setStatusMsg;
+        private ComboBox comboBox2;
     }
 }

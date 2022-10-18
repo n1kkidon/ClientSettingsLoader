@@ -6,11 +6,14 @@ namespace ClientSettingsLoader.StaticData
     public class StaticChampionEndpoint
     {
         private const string versionJson = "https://ddragon.leagueoflegends.com/api/versions.json";
+        private const string ddragonLink = "http://ddragon.leagueoflegends.com/cdn/";
         private static string ChampionByKeyUrl = "";
+        private static string AllChamps = "";
 
         public StaticChampionEndpoint()
         {
-            ChampionByKeyUrl = "http://ddragon.leagueoflegends.com/cdn/" + GetLatestGameVersion() + "/data/en_US/champion/{0}.json";                  
+            ChampionByKeyUrl = ddragonLink + GetLatestGameVersion() + "/data/en_US/champion/{0}.json";
+            AllChamps = ddragonLink + GetLatestGameVersion() + "/data/en_US/championFull.json";
         }
         public string GetLatestGameVersion()
         {
@@ -39,5 +42,12 @@ namespace ClientSettingsLoader.StaticData
             return championStandAlone.Data.First().Value;
         }
 
+        public async Task<ChampionListStatic> GetAllAsync()
+        {
+            HttpClient client = new();
+            var json = await client.GetStringAsync(AllChamps).ConfigureAwait(false);
+            var champs = JsonConvert.DeserializeObject<ChampionListStatic>(json);
+            return champs;
+        }
     }
 }

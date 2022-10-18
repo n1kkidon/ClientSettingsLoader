@@ -16,8 +16,11 @@ namespace ClientSettingsLoader
             FileGeneralData = "";
             FileInputData = "";
             comboBox1.Enabled = false;
-
+            var endpoint = new StaticChampionEndpoint();
+            var list = endpoint.GetAllAsync().Result.Champions.Values.ToArray();
+            comboBox2.Items.AddRange(list);
         }
+
         private string? FileInputData { get; set; }
         private string? FileGeneralData { get; set; }
         private LeagueConnection Lc { get; set; }
@@ -167,49 +170,22 @@ namespace ClientSettingsLoader
         }
 
         public List<SkinStatic> skinList;
-        private void GetSkins_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var values = textBox1.Text.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                for (int i = 0; i < values.Length; i++)
-                    values[i] = values[i][0].ToString().ToUpper() + values[i][1..];
-                var name = values.JoinColletion("");
-                var endpoint = new StaticChampionEndpoint();
-                var skindata = endpoint.GetByKeyAsync(name).Result;
-                skinList = skindata.Skins;
-                
-
-                label1.Text = "Champion found!";
-                label1.ForeColor = Color.Green;
-                label1.Visible = true;
-                ExpireLabel();
-
-                comboBox1.Items.Clear();
-                comboBox1.Items.AddRange(skinList.ToArray());
-                comboBox1.SelectedIndex = 0;
-                comboBox1.Enabled = true;
-                Run_Btn.Enabled = true;
-            }
-            catch(Exception ex)
-            {
-                Run_Btn.Enabled = false;
-                label1.Text = "Champion not found!";
-                label1.ForeColor = Color.Red;
-                label1.Visible = true;
-                ExpireLabel();
-
-                comboBox1.Enabled = false;
-                var str = ex.Message;
-                var str2 = ex.StackTrace;
-            }
-        }
 
         private async void setStatusMsg_Click(object sender, EventArgs e)
         {
-            var customenter = "　　　　　　　　　　　　　 　　　　　　　　　　　　  ";
+            var customenter = new string(' ', 89)+" ";
             if (CheckIfConnected())
-                await ExecutePut("/lol-chat/v1/me", $"{{\"statusMessage\": \"{textBox2.Lines.JoinColletion(customenter).Replace(" ", " ")}\"}}");
+                await ExecutePut("/lol-chat/v1/me", $"{{\"statusMessage\": \"{textBox2.Lines.JoinColletion2()}\"}}");
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            skinList = ((ChampionStatic)comboBox2.SelectedItem).Skins;
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(skinList.ToArray());
+            comboBox1.SelectedIndex = 0;
+            comboBox1.Enabled = true;
+            Run_Btn.Enabled = true;
         }
     }
 }

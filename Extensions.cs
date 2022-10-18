@@ -24,5 +24,15 @@ namespace ClientSettingsLoader
             final += values.ElementAt(^1);
             return final;
         }
+        public static string JoinColletion2(this IEnumerable<string> values)
+        {
+            if (!values.Any())
+                return "";
+            string final = String.Empty;
+            for (int i = 0; i < values.Count() - 1; i++)
+                final += values.ElementAt(i) + new string(' ', 27-values.ElementAt(i).Length/4); //wip, a bit scuffed atm
+            final += values.ElementAt(^1);
+            return final;
+        }
     }
 }
