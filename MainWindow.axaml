@@ -1,0 +1,173 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:avaloniaClient"
+        x:Class="avaloniaClient.MainWindow"
+        Title="Client Settings Loader"
+        Width="586"
+        Height="450"
+        Background="#222222">
+
+    <Grid>
+        <Button
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                
+                Margin="77,74,0,0"
+                Width="100"
+                Height="50"
+                Click="OnImportInputClick"
+                Background="White"
+                Foreground="Black"
+                >
+                <TextBlock TextWrapping="Wrap" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Import Input Profile</TextBlock>
+        </Button>
+
+        <Button Content="Set client settings"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Margin="77,291,0,0"
+                Width="215"
+                Height="30"
+                Name="SetSettingsBtn"
+                Foreground="Black"
+                Click="OnSetClientSettingsClick"
+                Background="White"/>
+
+        <!-- Add other controls with similar XAML syntax -->
+
+        <Button
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="191,74,0,0"
+                Width="100"
+                Height="50"
+                Click="OnExportProfilesClick"
+                Foreground="Black"
+                Background="White">
+        <TextBlock TextWrapping="Wrap" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Export Profiles</TextBlock>
+        </Button>
+
+        <Button
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="77,142,0,0"
+                Width="100"
+                Height="50"
+                Click="OnImportGeneralClick"
+                Foreground="Black"
+                Background="White">
+                <TextBlock TextWrapping="Wrap" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Import General Profile</TextBlock>
+        </Button>
+
+        <Button
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="191,142,0,0"
+                Width="100"
+                Height="50"
+                Click="OnResetTokensClick"
+                Foreground="Black"
+                Background="White">
+                <TextBlock TextWrapping="Wrap" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Reset Challenges</TextBlock>
+                </Button>
+
+        <ComboBox HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="77,247,0,0"
+                  Width="215"
+                  Name="SkinDropdownBox"
+                  SelectedIndex="-1"
+                  Foreground="Black"
+                  Background="White"/>
+
+        <!-- Add other controls with similar XAML syntax -->
+
+        <TextBox HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="316,74,0,0"
+                 Width="175"
+                 Height="196"
+                 Name="StatusMessage"
+                 Background="White"
+                 Foreground="Black"
+                 TextWrapping="Wrap"
+                 Watermark="Set status message"/>
+
+        <Button Content="Set status message"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Margin="316,291,0,0"
+                Width="175"
+                Height="31"
+                Click="OnSetStatusClick"
+                Foreground="Black"
+                Background="White"/>
+
+        <ComboBox HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="77,210,0,0"
+                  Width="215"
+                  Name="ChampionDropdownBox"
+                  SelectedIndex="-1"
+                  SelectionChanged="OnChampionDropdownChange"
+                  Foreground="Black"
+                  Background="White"/>
+
+        <TextBox HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="77,340,0,0"
+                 Width="215"
+                 Name="challengeSet"
+                 Background="White"
+                 Foreground="Black"
+                 Watermark="Challenge id/ids (use ',')"/>
+
+        <Button Content="Set Challenges"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Margin="316,339,0,0"
+                Width="175"
+                Height="30"
+                Click="SetChallenges_Click"
+                Foreground="Black"
+                Background="White">
+        </Button>
+        
+        <TextBlock Name="label1" FontSize="16" Margin="12,409,0,0" Text="label1"/>
+        <TextBlock Name="label2" Margin="77,124,0,0" Text="No File"/>
+        <TextBlock Name="label3" Margin="77,192,0,0" Text="No File"/>
+    </Grid>
+        <Window.Styles>
+                <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="LightGray"/>  
+                </Style>
+                <Style Selector="Button:disabled /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Gray"/>  
+                </Style>
+                <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Gray"/>  
+                </Style>
+                <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="LightGray"/>  
+                </Style>
+                <Style Selector="ComboBox">
+                        <Style.Resources>
+                                <SolidColorBrush x:Key="ComboBoxBackgroundDisabled">Gray</SolidColorBrush>
+                                <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver">LightGray</SolidColorBrush>
+                        </Style.Resources>
+                </Style>
+                <Style Selector="TextBox">
+                        <Setter Property="Background" Value="Red"/>
+                </Style>
+        
+                <Style Selector="TextBox:focus /template/ ContentPresenter">  
+                        <Setter Property="Background" Value="Red"/>  
+                </Style>
+        </Window.Styles>
+</Window>

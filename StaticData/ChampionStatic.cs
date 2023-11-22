@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-
-namespace ClientSettingsLoader.StaticData
+namespace avaloniaClient.StaticData
 {
     /// <summary>
     /// Class representing a champion (Static API).

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ClientSettingsLoader.StaticData
+namespace avaloniaClient.StaticData
 {
     /// <summary>
     /// Class representing a skin of a champion (Static API).
